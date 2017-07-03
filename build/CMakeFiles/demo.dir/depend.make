@@ -3,6 +3,7 @@
 
 CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/BowVector.h
 CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/DBoW2.h
+CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/DWConfig.h
 CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/FBrief.h
 CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/FClass.h
 CMakeFiles/demo.dir/demo/demo.cpp.o: ../include/DBoW2/FDCGAN.h

@@ -25,7 +25,7 @@ set(HDRS
   include/DBoW2/BowVector.h           include/DBoW2/FBrief.h              include/DBoW2/FSurf64.h        include/DBoW2/FDCGAN.h   
   include/DBoW2/QueryResults.h        include/DBoW2/TemplatedDatabase.h   include/DBoW2/FORB.h
   include/DBoW2/DBoW2.h               include/DBoW2/FClass.h              include/DBoW2/FeatureVector.h
-  include/DBoW2/ScoringObject.h       include/DBoW2/TemplatedVocabulary.h)
+  include/DBoW2/ScoringObject.h       include/DBoW2/TemplatedVocabulary.h include/DWConfig.h)
 set(SRCS 
   src/BowVector.cpp     src/FBrief.cpp        src/FSurf64.cpp         src/FDCGAN.cpp          src/FORB.cpp
   src/FeatureVector.cpp src/QueryResults.cpp  src/ScoringObject.cpp)

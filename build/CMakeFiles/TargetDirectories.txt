@@ -1,0 +1,3 @@
+/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/demo.dir
+/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/Dependencies.dir
+/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/DBoW2.dir

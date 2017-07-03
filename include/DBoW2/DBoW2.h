@@ -68,6 +68,7 @@ namespace DBoW2
 #include "FSurf64.h"
 #include "FBrief.h"
 #include "FORB.h"
+#include "FDCGAN.h"
 
 /// SURF64 Vocabulary
 typedef DBoW2::TemplatedVocabulary<DBoW2::FSurf64::TDescriptor, DBoW2::FSurf64> 
@@ -85,5 +86,7 @@ typedef DBoW2::TemplatedVocabulary<DBoW2::FBrief::TDescriptor, DBoW2::FBrief>
 typedef DBoW2::TemplatedDatabase<DBoW2::FBrief::TDescriptor, DBoW2::FBrief> 
   BriefDatabase;
 
-#endif
+/// DCGAN Vocabulary
+typedef DBoW2::TemplatedVocabulary<DBoW2::FDCGAN::TDescriptor, DBoW2::FDCGAN> DCGANVocabulary;
 
+#endif

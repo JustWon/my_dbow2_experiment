@@ -1,0 +1,51 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/DLib"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/DLib.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/CMakeFiles/DLib-complete.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-install.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-mkdir.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-download.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-update.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-patch.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-configure.rule"
+		},
+		
+		{
+			"file" : "/home/dongwonshin/Desktop/DBoW2/build/dependencies/src/DLib-stamp/DLib-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "DLib" ],
+		"name" : "DLib"
+	}
+}

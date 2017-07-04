@@ -1,4 +1,5 @@
 #include <string.h>
+#include <dirent.h>
 
 using namespace std;
 
@@ -17,8 +18,10 @@ const int desc_dim = 128;
 const int train_set_num = 100;
 const int test_set_num = 1000;
 
-const bool Proposed_Method_Test = true;
+const bool Proposed_Method_Test = false;
 const bool SURF_Test = true;
+
+const float surf_param[3] = {400,4,2};
 
 
 // functions

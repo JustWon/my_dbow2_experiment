@@ -37,6 +37,8 @@ FDCGAN.h
 ../include/DBoW2/DWConfig.h
 string.h
 -
+dirent.h
+-
 
 ../include/DBoW2/FBrief.h
 opencv2/core.hpp
@@ -182,8 +184,6 @@ opencv2/xfeatures2d.hpp
 stdio.h
 -
 sys/types.h
--
-dirent.h
 -
 string.h
 -

@@ -24,7 +24,6 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <stdio.h>
 #include <sys/types.h>
-#include <dirent.h>
 #include <string.h>
 #include <DWConfig.h>
 
@@ -32,15 +31,8 @@ using namespace DBoW2;
 using namespace DUtils;
 using namespace std;
 
-// number of training images
-const int start_idx = 0;
-const int NIMAGES = 100;
-
 // extended surf gives 128-dimensional vectors
 const bool EXTENDED_SURF = false;
-
-const int num_training = 100;
-const int num_test = 2474;
 
 
 void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTraining)
@@ -61,7 +53,7 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 //	fclose(fp);
 
 	vector<vector<float> > descriptors;
-	for(int i = 0; i <= train_set_num ; i++)
+	for(int i = 0; i < file_lists.size() ; i++)
 	{
 		vector<vector<float> > descriptors;
 		descriptors.clear();
@@ -84,8 +76,8 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 
 		features.push_back(descriptors);
 
-		if (i == file_lists.size()-1)
-			break;
+//		if (i == file_lists.size()-1)
+//			break;
 	}
 }
 
@@ -94,13 +86,12 @@ void createVocabulary(DCGANVocabulary &voc, const vector<vector<vector<float> > 
 	voc.create(training_features);
 	cout << "... done!" << endl;
 
-	cout << "Vocabulary information: " << endl
-			<< voc << endl << endl;
+	cout << "Vocabulary information: " << endl	<< voc << endl << endl;
 }
 
 void validateVocabulary (DCGANVocabulary &voc, const vector<vector<vector<float> > > &validation_features)
 {
-	int num = validation_features.size()-1;
+	int num = validation_features.size();
 	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
 	FILE *fp = fopen(DCGAN_corr_matrix_output.c_str(),"wt");
@@ -125,7 +116,7 @@ void validateVocabulary (DCGANVocabulary &voc, const vector<vector<vector<float>
 				if (max_score < score && score < 0.99)
 				{
 					max_score = score;
-					most_related_idx = j+1;
+					most_related_idx = j;
 				}
 			}
 			else
@@ -135,7 +126,7 @@ void validateVocabulary (DCGANVocabulary &voc, const vector<vector<vector<float>
 		}
 		fprintf(fp, "\n");
 		//fprintf(fp, "current_idx=%d, max_score=%lf, most_related_idx=%d\n", start_idx+i+1, max_score, start_idx+most_related_idx);
-		printf("current_idx=%d, max_score=%lf, most_related_idx=%d\n", start_idx+i+1, max_score, start_idx+most_related_idx);
+		printf("current_idx=%d, max_score=%lf, most_related_idx=%d\n", i+1, max_score, most_related_idx);
 	}
 
 	fclose(fp);
@@ -170,7 +161,8 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 //	}
 //	fclose(fp);
 
-	cv::Ptr<cv::xfeatures2d::SURF> surf = cv::xfeatures2d::SURF::create(10000, 4, 2, EXTENDED_SURF);
+	cv::Ptr<cv::xfeatures2d::SURF> surf =
+			cv::xfeatures2d::SURF::create(surf_param[0], surf_param[1], surf_param[2], EXTENDED_SURF);
 
 	cout << "Extracting SURF features..." << endl;
 	for(int i = 0; i <= train_set_num; ++i)
@@ -187,7 +179,7 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 		features.push_back(vector<vector<float> >());
 		changeStructure(descriptors, features.back(), surf->descriptorSize());
 
-//		printf("# of desc : %d\n", descriptors.size());
+		printf("# of desc : %d\n", descriptors.size());
 		if (i == file_lists.size()-1)
 			break;
 	}
@@ -204,7 +196,7 @@ void createVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float> >
 
 void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float> > > &validation_features)
 {
-	int num = validation_features.size()-1;
+	int num = validation_features.size();
 	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
 	FILE *fp = fopen(SURF_corr_matrix_output.c_str(),"wt");
@@ -238,7 +230,7 @@ void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float>
 		}
 		// fprintf(fp, "current_idx=%d, max_score=%lf, most_related_idx=%d\n", start_idx+i+1, max_score, start_idx+most_related_idx);
 		fprintf(fp, "\n");
-		printf("current_idx=%d, max_score=%lf, most_related_idx=%d\n", start_idx+i+1, max_score, start_idx+most_related_idx);
+		printf("current_idx=%d, max_score=%lf, most_related_idx=%d\n", i+1, max_score, most_related_idx);
 	}
 	fclose(fp);
 }

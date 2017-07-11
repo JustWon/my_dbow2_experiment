@@ -39,6 +39,18 @@ string.h
 -
 dirent.h
 -
+sstream
+-
+sys/types.h
+-
+sys/stat.h
+-
+unistd.h
+-
+fstream
+-
+DBoW2.h
+../include/DBoW2/DBoW2.h
 
 ../include/DBoW2/FBrief.h
 opencv2/core.hpp

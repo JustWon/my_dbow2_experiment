@@ -45,12 +45,12 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 	else
 		file_lists = getFileNames(test_desc_dir_path.c_str());
 
-//	FILE *fp = fopen("DCGAN_image_order.txt","wt");
-//	for (vector<string>::iterator iter = file_lists.begin(); iter != file_lists.end(); ++iter){
-//		fprintf(fp, "%s\n", (*iter).c_str());
-////		cout << *iter << endl;
-//	}
-//	fclose(fp);
+	FILE *fp = fopen("DCGAN_image_order.txt","wt");
+	for (vector<string>::iterator iter = file_lists.begin(); iter != file_lists.end(); ++iter){
+		fprintf(fp, "%s\n", (*iter).c_str());
+//		cout << *iter << endl;
+	}
+	fclose(fp);
 
 	vector<vector<float> > descriptors;
 	for(int i = 0; i < file_lists.size() ; i++)
@@ -94,7 +94,7 @@ void validateVocabulary (DCGANVocabulary &voc, const vector<vector<vector<float>
 	int num = validation_features.size();
 	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
-	FILE *fp = fopen(DCGAN_corr_matrix_output.c_str(),"wt");
+	FILE *fp = fopen(corr_matrix_output.c_str(),"wt");
 	// lets do something with this vocabulary
 	cout << "Matching images against themselves (0 low, 1 high): " << endl;
 	BowVector v1, v2;
@@ -149,10 +149,17 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 {
 	features.clear();
 	vector<string> file_lists;
+	int set_num = 0;
 	if (isTraining)
+	{
 		file_lists = getFileNames(train_img_dir_path.c_str());
+		set_num = train_set_num;
+	}
 	else
+	{
 		file_lists = getFileNames(test_img_dir_path.c_str());
+		set_num = test_set_num;
+	}
 
 //	FILE *fp = fopen("SURF_image_order.txt","wt");
 //	for (vector<string>::iterator iter = file_lists.begin(); iter != file_lists.end(); ++iter){
@@ -165,7 +172,7 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 			cv::xfeatures2d::SURF::create(surf_param[0], surf_param[1], surf_param[2], EXTENDED_SURF);
 
 	cout << "Extracting SURF features..." << endl;
-	for(int i = 0; i <= train_set_num; ++i)
+	for(int i = 0; i <= set_num; ++i)
 	{
 		printf("%s\n", file_lists[i].c_str());
 		cv::Mat image = cv::imread(file_lists[i].c_str(), 0);
@@ -175,11 +182,14 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 		vector<float> descriptors;
 
 		surf->detectAndCompute(image, mask, keypoints, descriptors);
+//		vector<float>::const_iterator begin = descriptors.begin();
+//		vector<float>::const_iterator last = descriptors.begin()+300;
+//		vector<float> limited_desc(begin, last);
+		printf("# of desc : %f\n", float(descriptors.size()/64));
 
 		features.push_back(vector<vector<float> >());
 		changeStructure(descriptors, features.back(), surf->descriptorSize());
 
-		printf("# of desc : %d\n", descriptors.size());
 		if (i == file_lists.size()-1)
 			break;
 	}
@@ -199,7 +209,7 @@ void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float>
 	int num = validation_features.size();
 	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
-	FILE *fp = fopen(SURF_corr_matrix_output.c_str(),"wt");
+	FILE *fp = fopen(corr_matrix_output.c_str(),"wt");
 	// lets do something with this vocabulary
 	cout << "Matching images against themselves (0 low, 1 high): " << endl;
 	BowVector v1, v2;
@@ -238,6 +248,7 @@ void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float>
 
 int main()
 {
+	resultLogOrganization();
 	// Proposed Method
 	if (Proposed_Method_Test){
 		// branching factor and depth levels
@@ -245,7 +256,7 @@ int main()
 		const int k = 10;
 		const int L = 5;
 		const WeightingType weight = TF_IDF;
-		const ScoringType score = DOT_PRODUCT;
+		const ScoringType score = g_score;
 		cout << "Creating a small " << k << "^" << L << " vocabulary..." << endl;
 
 		DCGANVocabulary voc(k, L, weight, score);
@@ -265,7 +276,7 @@ int main()
 		const int k = 10;
 		const int L = 5;
 		const WeightingType weight = TF_IDF;
-		const ScoringType score = L2_NORM;
+		const ScoringType score = g_score;
 		cout << "Creating a small " << k << "^" << L << " vocabulary..." << endl;
 
 		Surf64Vocabulary voc(k, L, weight, score);

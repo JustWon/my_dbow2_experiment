@@ -1,0 +1,4 @@
+[Section]
+Method = SURF
+Scoring type = 5
+SURF params = {10000,4,2}

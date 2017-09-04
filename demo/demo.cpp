@@ -32,8 +32,10 @@ using namespace DUtils;
 using namespace std;
 
 // extended surf gives 128-dimensional vectors
-const bool EXTENDED_SURF = false;
+const bool EXTENDED_SURF = true;
 
+
+DW_Config dw_config;
 
 void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTraining)
 {
@@ -41,9 +43,9 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 	vector<string> file_lists;
 
 	if (isTraining)
-		file_lists = getFileNames(train_desc_dir_path.c_str());
+		file_lists = dw_config.getFileNames(dw_config.getTrainDescDirPath().c_str());
 	else
-		file_lists = getFileNames(test_desc_dir_path.c_str());
+		file_lists = dw_config.getFileNames(dw_config.getTestDescDirPath().c_str());
 
 	FILE *fp = fopen("DCGAN_image_order.txt","wt");
 	for (vector<string>::iterator iter = file_lists.begin(); iter != file_lists.end(); ++iter){
@@ -52,6 +54,7 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 	}
 	fclose(fp);
 
+	int desc_num = dw_config.getDescNum(), desc_dim = dw_config.getDescDim();
 	vector<vector<float> > descriptors;
 	for(int i = 0; i < file_lists.size() ; i++)
 	{
@@ -85,16 +88,14 @@ void createVocabulary(DCGANVocabulary &voc, const vector<vector<vector<float> > 
 {
 	voc.create(training_features);
 	cout << "... done!" << endl;
-
 	cout << "Vocabulary information: " << endl	<< voc << endl << endl;
 }
 
 void validateVocabulary (DCGANVocabulary &voc, const vector<vector<vector<float> > > &validation_features)
 {
 	int num = validation_features.size();
-	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
-	FILE *fp = fopen(corr_matrix_output.c_str(),"wt");
+	FILE *fp = fopen(dw_config.getCorrMatrixOutput().c_str(),"wt");
 	// lets do something with this vocabulary
 	cout << "Matching images against themselves (0 low, 1 high): " << endl;
 	BowVector v1, v2;
@@ -152,13 +153,13 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 	int set_num = 0;
 	if (isTraining)
 	{
-		file_lists = getFileNames(train_img_dir_path.c_str());
-		set_num = train_set_num;
+		file_lists = dw_config.getFileNames(dw_config.getTrainImgDirPath().c_str());
+		set_num = dw_config.getTrainSetNum();
 	}
 	else
 	{
-		file_lists = getFileNames(test_img_dir_path.c_str());
-		set_num = test_set_num;
+		file_lists = dw_config.getFileNames(dw_config.getTestImgDirPath().c_str());
+		set_num = dw_config.getTestSetNum();
 	}
 
 //	FILE *fp = fopen("SURF_image_order.txt","wt");
@@ -168,6 +169,7 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 //	}
 //	fclose(fp);
 
+	float* surf_param = dw_config.getSurfParam();
 	cv::Ptr<cv::xfeatures2d::SURF> surf =
 			cv::xfeatures2d::SURF::create(surf_param[0], surf_param[1], surf_param[2], EXTENDED_SURF);
 
@@ -185,7 +187,7 @@ void loadSURFFeatures(vector<vector<vector<float> > > &features, bool isTraining
 //		vector<float>::const_iterator begin = descriptors.begin();
 //		vector<float>::const_iterator last = descriptors.begin()+300;
 //		vector<float> limited_desc(begin, last);
-		printf("# of desc : %f\n", float(descriptors.size()/64));
+//		printf("# of desc : %f\n", float(descriptors.size()/64));
 
 		features.push_back(vector<vector<float> >());
 		changeStructure(descriptors, features.back(), surf->descriptorSize());
@@ -207,9 +209,8 @@ void createVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float> >
 void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float> > > &validation_features)
 {
 	int num = validation_features.size();
-	cout << "Vocabulary information: " << endl << voc << endl << endl;
 
-	FILE *fp = fopen(corr_matrix_output.c_str(),"wt");
+	FILE *fp = fopen(dw_config.getCorrMatrixOutput().c_str(),"wt");
 	// lets do something with this vocabulary
 	cout << "Matching images against themselves (0 low, 1 high): " << endl;
 	BowVector v1, v2;
@@ -248,45 +249,33 @@ void validateVocabulary(Surf64Vocabulary &voc, const vector<vector<vector<float>
 
 int main()
 {
-	resultLogOrganization();
-	// Proposed Method
-	if (Proposed_Method_Test){
-		// branching factor and depth levels
-		cout << "Extracting DCGAN features..." << endl;
-		const int k = 10;
-		const int L = 5;
-		const WeightingType weight = TF_IDF;
-		const ScoringType score = g_score;
-		cout << "Creating a small " << k << "^" << L << " vocabulary..." << endl;
+	const int k = dw_config.getClusterCenterNum();
+	const int L = dw_config.getDepthLevelNum();
+	const WeightingType weight = dw_config.getWeightingType();
+	const ScoringType score = dw_config.getScoringType();
 
+	vector<vector<vector<float> > > training_features;
+	vector<vector<vector<float> > > validation_features;
+
+	if (dw_config.getEvalMethod() == "proposed method"){
+		dw_config.resultLogOrganization();
 		DCGANVocabulary voc(k, L, weight, score);
-		vector<vector<vector<float> > > training_features;
 		loadDCGANFeatures(training_features, true);
-		createVocabulary(voc, training_features);
-
-		vector<vector<vector<float> > > validation_features;
 		loadDCGANFeatures(validation_features, false);
-		validateVocabulary(voc, validation_features);
-	}
 
-	// SURF features
-	if (SURF_Test){
-	    // branching factor and depth levels
-		cout << "Extracting SURF features..." << endl;
-		const int k = 10;
-		const int L = 5;
-		const WeightingType weight = TF_IDF;
-		const ScoringType score = g_score;
-		cout << "Creating a small " << k << "^" << L << " vocabulary..." << endl;
-
-		Surf64Vocabulary voc(k, L, weight, score);
-		vector<vector<vector<float> > > training_features;
-		loadSURFFeatures(training_features, true);
 		createVocabulary(voc, training_features);
-
-		vector<vector<vector<float> > > validation_features;
-		loadSURFFeatures(validation_features, false);
 		validateVocabulary(voc, validation_features);
 	}
+
+	if (dw_config.getEvalMethod() == "SURF"){
+		dw_config.resultLogOrganization();
+		Surf64Vocabulary voc(k, L, weight, score);
+		loadSURFFeatures(training_features, true);
+		loadSURFFeatures(validation_features, false);
+
+		createVocabulary(voc, training_features);
+		validateVocabulary(voc, validation_features);
+	}
+
 	return 0;
 }

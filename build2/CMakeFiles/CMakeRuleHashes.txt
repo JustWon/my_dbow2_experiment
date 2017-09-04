@@ -1,0 +1,8 @@
+# Hashes of file build rules.
+3aa56e8951723f0ddcda0a76fbf6255d CMakeFiles/DLib-complete
+c6486b3380c13cfeb58ea4bba1240ed3 dependencies/src/DLib-stamp/DLib-build
+daebe3f77bb061df3f0d3450343e75ce dependencies/src/DLib-stamp/DLib-configure
+bf7759ed7b8febc2e58d6ec77b9f970e dependencies/src/DLib-stamp/DLib-download
+5a3deb5a9f32540ad2360deaf0250403 dependencies/src/DLib-stamp/DLib-install
+872d8c301db106a429df81d5052a105b dependencies/src/DLib-stamp/DLib-mkdir
+04da73a270d7f0c1d2d4b5b91989053b dependencies/src/DLib-stamp/DLib-patch

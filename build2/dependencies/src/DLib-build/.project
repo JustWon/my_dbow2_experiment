@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>DLib-Release@DLib-build</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.makeBuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enabledIncrementalBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.command</key>
+					<value>/usr/bin/make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.arguments</key>
+					<value>-j16</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib-build</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.environment</key>
+					<value>VERBOSE=1|CMAKE_NO_VERBOSE=1|</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.auto</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.clean</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.location</key>
+					<value>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib-build</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.core.errorOutputParser</key>
+					<value>org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.ScannerConfigBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.make.core.makeNature</nature>
+		<nature>org.eclipse.cdt.make.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[Source directory]</name>
+			<type>2</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib</location>
+		</link>
+		<link>
+			<name>[Subprojects]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Subprojects]/DLib</name>
+			<type>2</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib</location>
+		</link>
+		<link>
+			<name>[Targets]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/BRIEF.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/BRIEF.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/FSolver.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/FSolver.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/ImageFunctions.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/ImageFunctions.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/PLYFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/PLYFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/PatchFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/PatchFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/SurfSet.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/SurfSet.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/BundleCamera.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/BundleCamera.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/HSolver.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/HSolver.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Matches.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/Matches.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/PMVSCamera.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/PMVSCamera.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/PixelPointFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DVision/PixelPointFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Drawing.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/Drawing.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Geometry.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/Geometry.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Mat.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/Mat.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Types.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/Types.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/GUI.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/GUI.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/IO.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/IO.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Transformations.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtilsCV/Transformations.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/BinaryFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/BinaryFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/DebugFunctions.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/DebugFunctions.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/LUT.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/LUT.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Profiler.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/Profiler.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/StringFunctions.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/StringFunctions.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Timestamp.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/Timestamp.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/ConfigFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/ConfigFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/FileFunctions.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/FileFunctions.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/LineFile.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/LineFile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/Random.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/Random.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Source Files/TimeManager.cpp</name>
+			<type>1</type>
+			<location>/home/dongwonshin/Desktop/DBoW2/build2/dependencies/src/DLib/src/DUtils/TimeManager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] DLib/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

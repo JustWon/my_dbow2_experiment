@@ -26,15 +26,11 @@ private:
 
 	string corr_matrix_output = "";
 
-	int desc_num = 1000; // todo: What??!?
 	int desc_dim = 2048;
 
-	int train_set_num = 10;
-	int test_set_num = 10;
+	int train_set_num = 100;
+	int test_set_num = 1000;
 
-//	const bool Proposed_Method_Test = false;
-//	const bool SURF_Test = true;
-//
 	float surf_param[3] = {300,4,2};
 
 	string eval_method;
@@ -93,6 +89,7 @@ public:
 			 << "scoring_type = " << score_type << endl
 			 << "cluster_center = " << cluster_center << endl
 			 << "depth_level = " << depth_level << endl
+			 << "test_desc_dir_path = " << test_desc_dir_path << endl
 			 << "=========================================" << endl;
 	}
 
@@ -196,7 +193,6 @@ public:
 	string getTrainImgDirPath() {return train_img_dir_path;}
 	string getTestImgDirPath() {return test_img_dir_path;}
 
-	int getDescNum() {return desc_num;}
 	int getDescDim() {return desc_dim;}
 
 	int getTrainSetNum() {return train_set_num;}

@@ -54,7 +54,7 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 	}
 	fclose(fp);
 
-	int desc_num = dw_config.getDescNum(), desc_dim = dw_config.getDescDim();
+	int desc_dim = dw_config.getDescDim();
 	vector<vector<float> > descriptors;
 	for(int i = 0; i < file_lists.size() ; i++)
 	{
@@ -63,7 +63,8 @@ void loadDCGANFeatures(vector<vector<vector<float> > > &features, bool isTrainin
 
 		printf("%s\n", file_lists[i].c_str());
 		FILE *fp = fopen(file_lists[i].c_str(), "rt");
-		for (int j = 0 ; j< desc_num ; j++) // The # of patches in an image
+//		for (int j = 0 ; j< desc_num ; j++) // The # of patches in an image
+		while (!feof(fp))
 		{
 			vector<float> descriptor;
 			descriptor.clear();

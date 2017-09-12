@@ -43,6 +43,8 @@ private:
 	int cluster_center;
 	int depth_level;
 
+	string result_dir = "";
+
 public:
 	DW_Config() {
 		// soft coded configs
@@ -56,6 +58,7 @@ public:
 		string _scoring_type = pt.get<string>("Experiment_parameters.scoring_type");
 		int _cluster_center = pt.get<int>("Experiment_parameters.cluster_center");
 		int _depth_level = pt.get<int>("Experiment_parameters.depth_level");
+		string _result_dir = pt.get<string>("Experiment_parameters.result_dir");
 
 		eval_method = _eval_method;
 		eval_dataset = _eval_dataset;
@@ -66,12 +69,15 @@ public:
 		cluster_center = _cluster_center;
 		depth_level = _depth_level;
 
+		result_dir = _result_dir;
 
 		train_desc_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/Places365/Large_images/val_large (36500)/descs/" + network_model;
-		test_desc_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/FAB-MAP/Image Data/" + eval_dataset + " ManualLC/descs/" + eval_desc;
+//		test_desc_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/FAB-MAP/Image Data/" + eval_dataset + " ManualLC/descs/" + eval_desc;
+		test_desc_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/KAIST_All_Day/Synced_Data/"+eval_dataset+"/descs/small_size_512dim";
 
 		train_img_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/Places365/Large_images/val_large (36500)/images";
-		test_img_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/FAB-MAP/Image Data/"+ eval_dataset +" ManualLC/images";
+//		test_img_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/FAB-MAP/Image Data/"+ eval_dataset +" ManualLC/images";
+		test_img_dir_path = "/media/dongwonshin/Ubuntu Data/Datasets/KAIST_All_Day/Synced_Data/"+eval_dataset+"/images/small_size";
 
 		printConfig();
 	}
@@ -89,7 +95,6 @@ public:
 			 << "scoring_type = " << score_type << endl
 			 << "cluster_center = " << cluster_center << endl
 			 << "depth_level = " << depth_level << endl
-			 << "test_desc_dir_path = " << test_desc_dir_path << endl
 			 << "=========================================" << endl;
 	}
 
@@ -108,7 +113,7 @@ public:
 	struct stat st = {0};
 	void makeLogDir(ostringstream& ss)
 	{
-		string log_dir = "result/" + ss.str();
+		string log_dir = result_dir + "/" + ss.str();
 
 		if (stat(log_dir.c_str(), &st) == -1) {
 	 	   mkdir(log_dir.c_str(), 0700);
@@ -137,9 +142,9 @@ public:
 		strCurrentTime(cur_time_str);
 		makeLogDir(cur_time_str);
 
-		corr_matrix_output = "result/" + cur_time_str.str() + "/corr_matrix.txt";
+		corr_matrix_output = result_dir + "/" + cur_time_str.str() + "/corr_matrix.txt";
 
-		ofstream ofs(("result/"+cur_time_str.str()+"/output_config.ini").c_str());
+		ofstream ofs((result_dir + "/" +cur_time_str.str()+"/output_config.ini").c_str());
 		ofs << "[Experiment_parameters]" << endl;
 		ofs << "exp_method = " << eval_method << endl;
 		ofs << "eval_dataset = " << eval_dataset << endl;
